@@ -50,7 +50,7 @@ def rgb_to_lab(r, g, b):
         z = (7.787*z) + (16.0/116.0)
     return (116.0 * y) - 16, 500.0*(x - y), 200.0*(y - z)
 
-# Calculates color difference using the CMC variant of the Delta_E formula
+# Calculates color difference using the CMC Delta_E formula
 # Reference: http://en.wikipedia.org/wiki/Color_difference#CMC_l:c_.281984.29
 def deltae_cmc(lab1, lab2):
     pl, pc = 2, 1 #2:1 ratio
@@ -119,7 +119,6 @@ def glue(fin, fout="glued.png", shredcount=None, k=10, stds=2):
         widths = {}
         for i in xrange(1, len(outliers)):
                 widths[outliers[i]-outliers[i-1]] = widths.get(i, 0) + 1
-        print outliers, widths
         shredwidth = max(widths.items(), key=lambda(tup): tup[1])[0]
         shredcount = width/shredwidth
         print "     Shreds:", shredcount, "\n     Width:", shredwidth, "px"
